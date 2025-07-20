@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>My Cybersecurity Portfolio</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #181f2a;
+      color: #ecf0f1;
+      margin: 0;
+      padding: 0;
+    }
+    section {
+      margin: 2em auto;
+      max-width: 800px;
+      padding: 2em;
+      background: rgba(36, 42, 60, 0.95);
+      border-radius: 12px;
+      box-shadow: 0 2px 8px #0008;
+    }
+    h1, h2 {
+      color: #00e0ff;
+    }
+    ul {
+      list-style: circle;
+      padding-left: 2em;
+    }
+    #hero {
+      text-align: center;
+      margin-top: 2em;
+    }
+    #blog form {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      margin-bottom: 2em;
+    }
+    #blog input, #blog textarea, #blog button {
+      font-size: 1em;
+      padding: 0.75em;
+      border-radius: 6px;
+      border: 1px solid #222c;
+      background: #22273a;
+      color: #eee;
+    }
+    #blog-posts .blog-post {
+      background: #111b2b;
+      margin-bottom: 1.5em;
+      padding: 1.2em;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px #0006;
+    }
+    a {
+      color: #42aaff;
+    }
+    @media (max-width: 600px) {
+      section { padding: 1em; }
+      #hero h1 { font-size: 2em; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <section id="hero">
+    <h1>Your Name</h1>
+    <p>Cybersecurity Specialist | VAPT | Red Team | CEH | EWPTX V2</p>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      Passionate white-hat hacker with expertise in VAPT, red teaming, and mobile forensics.<br>
+      Security specialist for CERT-UK and Government of Uttarakhand.<br>
+      BTech in ECE from PSIT Kanpur, with hands-on experience in critical infrastructure security and forensics.
+    </p>
+  </section>
+
+  <!-- Experience Timeline -->
+  <section id="experience">
+    <h2>Career Timeline</h2>
+    <ul>
+      <li><strong>Current:</strong> Govt. of Uttarakhand – Security Specialist</li>
+      <li>IIT Kanpur – Security Researcher</li>
+      <li>C3i Hub (ICISS, IIT Kanpur) – Intern</li>
+      <li>Bulwark CyberX – Pentester</li>
+    </ul>
+  </section>
+
+  <!-- Skills & Certifications -->
+  <section id="skills">
+    <h2>Skills & Certifications</h2>
+    <ul>
+      <li>Vulnerability Assessment & Penetration Testing (VAPT)</li>
+      <li>Red Team Operations</li>
+      <li>Mobile Forensics</li>
+      <li>Security Auditing</li>
+      <li>CEH, EWPTX V2, Security+ (optional)</li>
+    </ul>
+  </section>
+
+  <!-- Blog Section -->
+  <section id="blog">
+    <h2>My Blog</h2>
+    <form id="blog-form">
+      <input type="text" id="blog-title" placeholder="Blog Title" required />
+      <textarea id="blog-content" placeholder="Blog content..." required></textarea>
+      <input type="text" id="blog-tags" placeholder="Tags (comma-separated)" />
+      <button type="submit">Add Blog Post</button>
+    </form>
+    <div id="blog-posts"></div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>Email: youremail@example.com</p>
+    <p>LinkedIn: <a href="#" target="_blank">Your LinkedIn</a></p>
+  </section>
+
+  <script>
+    // Simple Local Blog Post Storage
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("blog-form");
+      const postsDiv = document.getElementById("blog-posts");
+
+      function renderPosts() {
+        const posts = JSON.parse(localStorage.getItem("blogPosts") || "[]");
+        postsDiv.innerHTML = "";
+        posts.slice().reverse().forEach(post => {
+          const el = document.createElement("div");
+          el.className = "blog-post";
+          el.innerHTML = `
+            <h3>${post.title}</h3>
+            <small>${post.date} | Tags: ${post.tags}</small>
+            <p>${post.content}</p>
+          `;
+          postsDiv.appendChild(el);
+        });
+      }
+
+      form.addEventListener("submit", e => {
+        e.preventDefault();
+        const title = document.getElementById("blog-title").value;
+        const content = document.getElementById("blog-content").value;
+        const tags = document.getElementById("blog-tags").value;
+
+        const newPost = {
+          title,
+          content,
+          tags,
+          date: new Date().toLocaleDateString()
+        };
+
+        const posts = JSON.parse(localStorage.getItem("blogPosts") || "[]");
+        posts.push(newPost);
+        localStorage.setItem("blogPosts", JSON.stringify(posts));
+        form.reset();
+        renderPosts();
+      });
+
+      renderPosts();
+    });
+  </script>
+</body>
+</html>
