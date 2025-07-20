@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root {
+  --primary: #00fff6;
+  --accent: #24f595;
+  --bg: #131821;
+  --card: #222a38;
+  --text: #ecf0f1;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0; padding: 0;
+}
+nav {
+  width:100vw; text-align:center; position: fixed; top:0; left:0; z-index:100;
+  background: #131821e0; padding:1em 0 0.7em 0; box-shadow:0 0 20px #0ff2;
+  font-size:1.12em;
+}
+nav a {
+  color:var(--primary); margin:0 1.2em; letter-spacing:0.07em; text-decoration:none; transition:.15s;
+}
+nav a:hover { color: #fff; text-shadow: 0 0 7px var(--accent);}
+.section { max-width: 900px; margin: 3.2em auto; padding: 2em; background: var(--card); border-radius: 16px; box-shadow: 0 2px 12px #00fff34a; font-family: 'Poppins', sans-serif;}
+h1, h2, h3 { color: var(--primary);}
+.neon { text-shadow: 0 0 10px #0ff, 0 0 5px #24f595;}
+.social-row { display:flex; gap:1.2em; margin:1em 0;}
+.social-link {
+  display:inline-flex; align-items:center; text-decoration:none; color:var(--primary);
+  background:#181f2a; border-radius:10px; padding:.6em 1em; box-shadow:0 0 8px #00fff577;
+  font-weight:bold; font-size:1em; transition:.17s; font-family:'Poppins',sans-serif;
+}
+.social-link svg, .social-link img { margin-right:.65em; width:1.25em; height:1.25em;}
+.social-link:hover { background:#101419; color:#fff; box-shadow:0 0 12px #0ff;}
+.patreon-row { background:#0f1e30; border-radius:1em; padding:1.3em; display:flex; align-items:center; margin:1.6em auto 1em; box-shadow:0 2px 12px #ff424221; gap:1em; max-width:400px; justify-content: center;}
+.patreon-button { background: #FF424D; color: #fff; font-weight: bold; border: none; border-radius: 2em; padding: 0.8em 1.5em; font-size:1.08em; box-shadow:0 0 8px #ff424d88; text-decoration:none; display: flex; align-items: center; gap:0.4em; transition:.17s;}
+.patreon-button:hover { background: #d33; }
+#hero { height: 330px; text-align:center; display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; overflow:hidden; margin-top:4em;}
+#matrix-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 330px; z-index: 0; pointer-events: none; }
+#hacker-graphic { width:80px; filter: drop-shadow(0 0 7px #00fff6aa); margin: 1em auto 0.8em auto; display:block;}
+.timeline { border-left: 3px solid var(--primary); margin: 1.2em 0 0.7em 1em; padding-left: 1.1em;}
+.timeline div { margin: 1.05em 0; position: relative;}
+.timeline div:before {content: ''; position: absolute; left: -22px; top: 8px; width: 14px; height: 14px; border-radius:50%; background: var(--primary); box-shadow: 0 0 7px #0ff;}
+.skill-badge {display:inline-block;margin:0.36em 0.36em 0.36em 0;font-size:1em;padding:0.47em 1em;background:#212b38c0;color:var(--primary);border:1.4px solid #0ff6;border-radius:2em;font-weight:bold;letter-spacing:.03em;box-shadow:0 0 5px #00fff5a9;}
+#blog-posts .blog-post { background: #12202d; margin-bottom: 1.2em; padding: 1em; border-radius: 8px; box-shadow: 0 1px 8px #00fff678;}
+.contact-link { color:var(--primary); text-decoration: none; border-bottom:1px dashed #00fff688;}
+.contact-link:hover { color:#fff; border-bottom:2.2px solid #0ff;}
+input, textarea, button { font-family:inherit; font-size:1em; border-radius: 7px; border: 1px solid #222c; background: #1c2444; color:#cff; margin-bottom: 0.7em; padding: 0.65em;}
+button[type="submit"] { background: var(--primary); color: #222; font-weight:bold; box-shadow:0 0 7px #0ff, 0 0 2px #24f595; }
+@media (max-width: 700px) { .section { padding: 1.1em;} nav { font-size:1em;} #hero { height:auto;} .patreon-row {flex-direction:column;} .social-row { flex-direction:column; gap: 1em;} }
