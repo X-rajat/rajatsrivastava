@@ -44,6 +44,7 @@
       border: 1px solid #222c;
       background: #22273a;
       color: #eee;
+      resize: vertical;
     }
     #blog-posts .blog-post {
       background: #111b2b;
@@ -54,6 +55,10 @@
     }
     a {
       color: #42aaff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
     }
     @media (max-width: 600px) {
       section { padding: 1em; }
@@ -64,7 +69,7 @@
 <body>
   <!-- Hero Section -->
   <section id="hero">
-    <h1>Your Name</h1>
+    <h1>Rajat Srivastava</h1>
     <p>Cybersecurity Specialist | VAPT | Red Team | CEH | EWPTX V2</p>
   </section>
 
@@ -72,9 +77,7 @@
   <section id="about">
     <h2>About Me</h2>
     <p>
-      Passionate white-hat hacker with expertise in VAPT, red teaming, and mobile forensics.<br>
-      Security specialist for CERT-UK and Government of Uttarakhand.<br>
-      BTech in ECE from PSIT Kanpur, with hands-on experience in critical infrastructure security and forensics.
+      Passionate white-hat hacker with expertise in VAPT, red teaming, and mobile forensics. Security specialist for CERT-UK and the Government of Uttarakhand. BTech in ECE from PSIT Kanpur, with hands-on experience in critical infrastructure security and forensics.
     </p>
   </section>
 
@@ -116,8 +119,8 @@
   <!-- Contact Section -->
   <section id="contact">
     <h2>Contact Me</h2>
-    <p>Email: youremail@example.com</p>
-    <p>LinkedIn: <a href="#" target="_blank">Your LinkedIn</a></p>
+    <p>Email: rajatsri1411@gmail.com</p>
+    <p>LinkedIn: <a href="#" target="_blank">https://www.linkedin.com/in/srivastava-rajat/</a></p>
   </section>
 
   <script>
@@ -143,9 +146,14 @@
 
       form.addEventListener("submit", e => {
         e.preventDefault();
-        const title = document.getElementById("blog-title").value;
-        const content = document.getElementById("blog-content").value;
-        const tags = document.getElementById("blog-tags").value;
+        const title = document.getElementById("blog-title").value.trim();
+        const content = document.getElementById("blog-content").value.trim();
+        const tags = document.getElementById("blog-tags").value.trim();
+
+        if (!title || !content) {
+          alert("Please fill in all required fields.");
+          return;
+        }
 
         const newPost = {
           title,
