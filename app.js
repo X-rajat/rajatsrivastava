@@ -697,3 +697,32 @@ document.addEventListener('DOMContentLoaded', () => {
     
   }, 1000);
 });
+
+# WhatsApp integration
+
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('whatsapp-form');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('user-name').value.trim();
+    const message = document.getElementById('user-message').value.trim();
+
+    if (!name || !message) {
+      alert("Please fill in both fields.");
+      return;
+    }
+
+    const phoneNumber = "919044510566"; // 🔁 Replace with your full WhatsApp number (with country code, no +)
+    const fullMessage = `Hello, my name is ${name}. 👋\n\n${message}`;
+
+    const encodedMessage = encodeURIComponent(fullMessage);
+
+    // Web WhatsApp link
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+    // Open in new tab
+    window.open(whatsappURL, '_blank');
+  });
+});
